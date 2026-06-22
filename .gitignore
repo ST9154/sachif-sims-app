@@ -1,0 +1,21 @@
+# Visual Studio files
+.vs/
+bin/
+obj/
+packages/
+*.user
+*.suo
+*.cache
+*.pdb
+*.dll
+
+# Publishing files
+publish/
+_publish/
+
+# Backup files
+*.bak
+*.tmp
+
+# Logs
+*.log

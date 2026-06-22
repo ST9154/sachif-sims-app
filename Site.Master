@@ -1,0 +1,53 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SACHIF_SIMS_Website.Site" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SACHIF SIMS - <asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <link rel="stylesheet" href="CSS/Style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="app-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="logo-area">
+                    <h3><i class="fas fa-shield-alt"></i> SACHIF</h3>
+                    <p>Integrated Management</p>
+                </div>
+                <nav class="nav-items">
+                    <asp:PlaceHolder ID="NavMenu" runat="server" />
+                </nav>
+                <div class="offline-badge">
+                    <i class="fas fa-database"></i>
+                    <span>Offline-first | Auto-sync</span>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="top-bar">
+                    <h2 class="page-title"><asp:ContentPlaceHolder ID="PageTitle" runat="server" /></h2>
+                    <div class="user-profile">
+                        <i class="fas fa-user-circle"></i>
+                        <span><asp:Label ID="lblUserName" runat="server" Text="User" /></span>
+                        <asp:LinkButton ID="btnLogout" runat="server" CssClass="logout-link" OnClick="btnLogout_Click">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </asp:LinkButton>
+                    </div>
+                </div>
+
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+                <footer>
+                    <i class="fas fa-lock"></i> 3-Tier MVC | Audit-ready | POPIA compliant
+                </footer>
+            </main>
+        </div>
+    </form>
+</body>
+</html>
