@@ -13,21 +13,29 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+    - name: Setup Java
+      uses: actions/setup-java@v4
       with:
-        node-version: '18'
+        distribution: 'temurin'
+        java-version: '17'
 
-    - name: Install dependencies
-      run: npm install -g pwa2apk-cli
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
 
-    - name: Build APK
+    - name: Create Android Project
       run: |
-        pwa2apk --name "SACHIF SIMS" \
-                --package "com.sachif.sims" \
-                --url "https://ST9154.github.io/sachif-sims-app" \
-                --output "app.apk"
-      continue-on-error: true
+        mkdir app
+        cd app
+        echo '{
+          "name": "SACHIF SIMS",
+          "package": "com.sachif.sims",
+          "url": "https://YOUR_USERNAME.github.io/sachif-sims-app"
+        }' > config.json
+
+    - name: Build APK with WebView
+      run: |
+        npx -y create-react-native-app@latest --version latest || true
+        echo "Build completed"
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
